@@ -4,8 +4,8 @@ import './index.scss';
 import logo from '../../assets/png/leon.jpg';
 
 const Header = () => (
-    <header>
-        <div><img src={logo} alt="logo" /></div>
+    <header data-test="Header">
+        <img src={logo} alt="logo" data-test="Logo" />
     </header>
 );
 
