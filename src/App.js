@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchPosts } from './actions';
 
 import './app.scss';
 import Header from './component/header';
 import Headline from './component/headline';
+import Button from './component/button';
+import ListItem from './component/listItem';
 
-const App = () => (
+const App = ({ posts, fetch }) => (
   <div className="App">
       <Header />
       <section className="main">
@@ -12,8 +16,21 @@ const App = () => (
           header="Posts" 
           desc="Click the button to render posts" 
         />
+		<Button 
+			content="FETCH POSTS"
+			onClick={fetch}
+		/>
+		{posts.map(({title, body}) => <ListItem title={title} paragraph={body}/>)}
       </section>
     </div>
 );
 
-export default App;
+const mapStateToProps = state => ({
+	posts: state.posts
+});
+
+const mapActionsToProps = dispatch => ({
+	fetch: () => dispatch(fetchPosts())
+})
+
+export default connect(mapStateToProps, mapActionsToProps)(App);
