@@ -9,7 +9,7 @@ import Button from './component/button';
 import ListItem from './component/listItem';
 
 const App = ({ posts, fetch }) => (
-  <div className="App">
+  <div className="App" data-test="App">
       <Header />
       <section className="main">
         <Headline 
@@ -20,7 +20,7 @@ const App = ({ posts, fetch }) => (
 			content="FETCH POSTS"
 			onClick={fetch}
 		/>
-		{posts.map(({title, body}) => <ListItem title={title} paragraph={body}/>)}
+		{posts.map(({title, body}) => <ListItem key ={title} title={title} paragraph={body} />)}
       </section>
     </div>
 );
