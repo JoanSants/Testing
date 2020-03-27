@@ -31,4 +31,14 @@ describe('App Component', () => {
 	});
 
 	it('Should render without errors', () => expect(findByTestAttr(wrapper, 'App').length).toBe(1));
+
+	it('toggleButton method should update state as expected', () => {
+		const appInstance = wrapper.instance();
+		appInstance.toggleButton();
+		expect(appInstance.state.showButton).toBe(false);
+	})
+
+	it('returnNumberPlusOne should return the value expected', () => {
+		expect(wrapper.instance().returnNumberPlusOne(5)).toBe(6);
+	});
 });
